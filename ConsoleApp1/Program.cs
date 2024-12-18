@@ -1,18 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Jakie słowo ma być odgadnięte?");
+﻿Console.WriteLine("Jakie słowo ma być odgadnięte?");
 string fullText = Console.ReadLine();
 
 Console.WriteLine("Ile szans ma mieć osoba odgadująca?");
-// int lives = int.Parse(Console.ReadLine());
-// int lives = Convert.ToInt32(Console.ReadLine());
-// int lives;
-// int.TryParse(Console.ReadLine(), out lives);
+
 if (!int.TryParse(Console.ReadLine(), out int lives))
 {
     lives = 3;
     Console.WriteLine($"Niepoprawna wartość, ustalam liczbę szans na {lives}");
 }
-
 
 // Poniższa linijka wywali grę, jeśli uruchomi się ją w Debug Console, dlatego zakomentowałem
 // Console.Clear();
@@ -62,14 +57,7 @@ while (lives > 0 && knownText != fullText)
     {
         Console.WriteLine("Litera, której szukasz jest w innym zamku");
         lives -= 1;
-        //lives = lives - 1;
-        // lives--;
     }
-
-    // if (lives <= 0)
-    // {
-    //     break;
-    // }
 }
 
 if (lives > 0)
