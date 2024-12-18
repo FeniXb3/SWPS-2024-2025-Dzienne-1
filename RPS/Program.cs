@@ -8,26 +8,28 @@ int secondPlayerPoints = 0;
 
 while (true)
 {
-    Console.WriteLine($"Podaj znak, graczu 1 ({string.Join("/", allowedSigns)})");
-    string firstSign = Console.ReadLine()?.ToLower().Trim() ?? string.Empty;
+    // Console.WriteLine($"Podaj znak, graczu 1 ({string.Join("/", allowedSigns)})");
+    // string firstSign = Console.ReadLine()?.ToLower().Trim() ?? string.Empty;
 
-    while (!allowedSigns.Contains(firstSign))
-    {
-        Console.WriteLine("Niepoprawny znak!");
-        Console.WriteLine($"Podaj POPRAWNY znak, graczu 1 ({string.Join("/", allowedSigns)})");
-        firstSign = Console.ReadLine()?.ToLower().Trim() ?? string.Empty;
-    }
+    // while (!allowedSigns.Contains(firstSign))
+    // {
+    //     Console.WriteLine("Niepoprawny znak!");
+    //     Console.WriteLine($"Podaj POPRAWNY znak, graczu 1 ({string.Join("/", allowedSigns)})");
+    //     firstSign = Console.ReadLine()?.ToLower().Trim() ?? string.Empty;
+    // }
 
-    Console.WriteLine($"Podaj znak, graczu 2 ({string.Join("/", allowedSigns)})");
-    string secondSign = Console.ReadLine()?.ToLower().Trim() ?? string.Empty;
+    // Console.WriteLine($"Podaj znak, graczu 2 ({string.Join("/", allowedSigns)})");
+    // string secondSign = Console.ReadLine()?.ToLower().Trim() ?? string.Empty;
 
 
-    while (!allowedSigns.Contains(secondSign))
-    {
-        Console.WriteLine("Niepoprawny znak!");
-        Console.WriteLine($"Podaj POPRAWNY znak, graczu 2 ({string.Join("/", allowedSigns)})");
-        secondSign = Console.ReadLine()?.ToLower().Trim() ?? string.Empty;
-    }
+    // while (!allowedSigns.Contains(secondSign))
+    // {
+    //     Console.WriteLine("Niepoprawny znak!");
+    //     Console.WriteLine($"Podaj POPRAWNY znak, graczu 2 ({string.Join("/", allowedSigns)})");
+    //     secondSign = Console.ReadLine()?.ToLower().Trim() ?? string.Empty;
+    // }
+    string firstSign = GetSign(1);
+    string secondSign = GetSign(2);
 
     if (firstSign == secondSign) // dlaczego tutaj nie ma średnika?!?!?!
     {
@@ -56,3 +58,19 @@ while (true)
 }
 
 Console.WriteLine("Dziękuję za grę!");
+
+// typ_zwracanych_danych nazwa_metody(parametry)
+string GetSign(int playerNumber)
+{
+    Console.WriteLine($"Podaj znak, graczu {playerNumber} ({string.Join("/", allowedSigns)})");
+    string sign = Console.ReadLine()?.ToLower().Trim() ?? string.Empty;
+
+    while (!allowedSigns.Contains(sign))
+    {
+        Console.WriteLine("Niepoprawny znak!");
+        Console.WriteLine($"Podaj POPRAWNY znak, graczu 1 ({string.Join("/", allowedSigns)})");
+        sign = Console.ReadLine()?.ToLower().Trim() ?? string.Empty;
+    }
+
+    return sign;
+}
