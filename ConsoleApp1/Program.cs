@@ -1,4 +1,4 @@
-Random rng = new Random();
+﻿Random rng = new Random();
 string[] defaultTexts = ["kotek", "Solid Snake", "SWPS"];
 
 Console.WriteLine("Jakie słowo ma być odgadnięte?");
@@ -23,6 +23,8 @@ if (!int.TryParse(Console.ReadLine(), out int lives))
 // Console.Clear();
 string[] knownLetters = new string[fullText.Length];
 Array.Fill(knownLetters, "-");
+string lowerCaseFullText = fullText.ToLower();
+
 
 int index = rng.Next(fullText.Length);
 string preguestLetter = fullText[index].ToString();
@@ -45,18 +47,18 @@ while (lives > 0 && knownText != fullText)
 {
     Console.WriteLine($"Known text: {knownText}");
     Console.WriteLine("Guess a letter:");
-    string letter = Console.ReadLine();
+    string letter = Console.ReadLine()?.ToLower() ?? string.Empty;
 
-    if (fullText.Contains(letter))
+    if (lowerCaseFullText.Contains(letter.ToLower()))
     {
         for (int i = 0; i < knownLetters.Length; i++)
         {
             if (knownLetters[i] == "-")
             {
-                if (fullText[i].ToString() == letter)
+                if (lowerCaseFullText[i].ToString() == letter.ToLower())
                 {
                     Console.WriteLine("Tak, ta litera znajduje się w tekście!");
-                    knownLetters[i] = letter;
+                    knownLetters[i] = fullText[i].ToString();
                 }
             }
         }
