@@ -23,8 +23,6 @@ if (!int.TryParse(Console.ReadLine(), out int lives))
 // Console.Clear();
 string[] knownLetters = new string[fullText.Length];
 Array.Fill(knownLetters, "-");
-string lowerCaseFullText = fullText.ToLower();
-
 
 int index = rng.Next(fullText.Length);
 string preguestLetter = fullText[index].ToString();
@@ -47,15 +45,15 @@ while (lives > 0 && knownText != fullText)
 {
     Console.WriteLine($"Known text: {knownText}");
     Console.WriteLine("Guess a letter:");
-    string letter = Console.ReadLine()?.ToLower() ?? string.Empty;
+    string letter = Console.ReadLine() ?? string.Empty;
 
-    if (lowerCaseFullText.Contains(letter.ToLower()))
+    if (fullText.Contains(letter, StringComparison.CurrentCultureIgnoreCase))
     {
         for (int i = 0; i < knownLetters.Length; i++)
         {
             if (knownLetters[i] == "-")
             {
-                if (lowerCaseFullText[i].ToString() == letter.ToLower())
+                if (string.Equals(fullText[i].ToString(), letter, StringComparison.CurrentCultureIgnoreCase))
                 {
                     Console.WriteLine("Tak, ta litera znajduje się w tekście!");
                     knownLetters[i] = fullText[i].ToString();
